@@ -1,25 +1,8 @@
 @model List<Book>
-
-@section Styles {
-    <style>
-        .custom-test-style {
-            color: red;
-        }
-    </style>
-}
-
-<h2 class="custom-test-style">Książki</h2>
+<h2>Książki</h2>
 <a asp-action="Create" class="btn btn-primary mb-3">+ Dodaj książkę</a>
-
 <table class="table">
-    <thead>
-    <tr>
-        <th>Tytuł</th>
-        <th>Autor</th>
-        <th>Rok</th>
-        <th>Cena</th>
-    </tr>
-    </thead>
+    <thead><tr><th>Tytuł</th><th>Autor</th><th>Rok</th><th>Cena</th></tr></thead>
     <tbody>
     @foreach (var b in Model)
     {
