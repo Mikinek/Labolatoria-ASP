@@ -89,4 +89,16 @@ public IActionResult Create(BookFormViewModel vm)
     TempData["Success"] = $"Dodano książkę „{vm.Title}”.";   // przetrwa jedno przekierowanie
     return RedirectToAction(nameof(Index));                   // PRG: F5 nie wyśle formularza drugi raz
 }
+
+public async Task<IActionResult> ByYear(int year)
+{
+     /* filtruj listę po roku, zwróć widok Index */
+     
 }
+
+public async Task<IActionResult> ByIsbn(string isbn)
+{
+     /* znajdź książkę, przekieruj na Details lub NotFound() */
+}
+}
+
