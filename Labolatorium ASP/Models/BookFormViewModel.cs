@@ -1,7 +1,7 @@
 namespace Labolatorium_ASP.Models;
 using System.ComponentModel.DataAnnotations;
 
-public class BookFormViewModel
+public class BookFormViewModel : IValidatableObject
 {
     [Required(ErrorMessage = "Tytuł jest wymagany")]
     [StringLength(200, MinimumLength = 2, ErrorMessage = "Tytuł: 2–200 znaków")]
@@ -23,4 +23,17 @@ public class BookFormViewModel
 
     [Required, Display(Name = "Autor")]
     public string Author { get; set; } = "";
+    [RegularExpression(@"^[A-Z]{3}-\d{4}$", ErrorMessage = "Format kodu wydawcy: XXX-0000 (np. PWN-1234)")]
+    [Display(Name = "Kod wydawcy")]
+    public string? PublisherCode { get; set; }
+
+    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    {
+        if (PublicationDate.HasValue && PublicationDate.Value.Year < 1900 && Price > 100m)
+        {
+            yield return new ValidationResult(
+                "Książka sprzed 1900 r. nie może kosztować więcej niż 100 zł."
+            );
+        }
+    }
 }

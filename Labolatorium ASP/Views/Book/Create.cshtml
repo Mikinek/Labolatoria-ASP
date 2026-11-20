@@ -36,6 +36,13 @@
         <input asp-for="Author" class="form-control" />
         <span asp-validation-for="Author" class="text-danger"></span>
     </div>
+    
+    <div class="mb-3">
+        <label asp-for="PublisherCode" class="form-label"></label>
+        <input asp-for="PublisherCode" class="form-control" placeholder="np. PWN-1234" />
+        <span asp-validation-for="PublisherCode" class="text-danger"></span>
+    </div>
+    
     <button class="btn btn-primary">Zapisz</button>
 </form>
 
